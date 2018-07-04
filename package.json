@@ -5,7 +5,7 @@
         "starter-global": "npm install gulp-cli@latest jspm@0.17.0-beta.44 -g",
         "starter-all": "npm run starter-global && npm run starter",
         "prestarter": "echo Preparing project...",
-        "starter": "npm install && npx jspm install",
+        "starter": "npm install && npx jspm install && npm install simplr-flux --save",
         "start": "gulp"
     },
     "devDependencies": {
@@ -98,5 +98,10 @@
                 }
             }
         }
+    },
+    "dependencies": {
+        "react-router": "^4.3.1",
+        "react-router-dom": "^4.3.1",
+        "simplr-flux": "^2.3.0"
     }
 }
