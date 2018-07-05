@@ -6,9 +6,10 @@ export class NavigationView extends React.Component {
     public render(): JSX.Element {
         return (
            <div>
-               <div><NavLink to="/">Home</NavLink></div>
-               <div><NavLink to="/login">Login</NavLink></div>
-               <div><NavLink to="/register">Register</NavLink></div>
+               <NavLink to="/">Home</NavLink>
+               <NavLink to="/login">Login</NavLink>
+               <NavLink to="/register">Register</NavLink>
+               <NavLink to="/profile">My profile</NavLink>
            </div>
         );
     }
