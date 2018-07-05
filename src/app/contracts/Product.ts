@@ -5,4 +5,5 @@ export interface Product {
     condition: string;
     moreDetails: string;
     price: number;
+    seller: string;
 }

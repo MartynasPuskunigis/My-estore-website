@@ -8,8 +8,9 @@ export namespace EStoreActionsCreators {
     quantity: number,
     productCondition: string,
     details: string,
-    price: number
+    price: number,
+    seller: string
   ): void {
-    Dispatcher.dispatch(new EStoreAddProduct(productName, quantity, productCondition, details, price));
+    Dispatcher.dispatch(new EStoreAddProduct(productName, quantity, productCondition, details, price, seller));
   }
 }

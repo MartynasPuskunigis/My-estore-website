@@ -3,13 +3,13 @@ import { Container } from "flux/utils";
 
 import { Product } from "./../contracts/Product";
 import { ProductsReduceStore } from "./../stores/products-store";
-import { ProductItemView } from "../components/product-item-view";
+import { ProfileProductItemView } from "./../components/profile-products-item-view";
 
 interface State {
     products: Product[];
 }
 
-class ProductsContainerClass extends React.Component<{}, State> {
+class ProfileProductsContainerClass extends React.Component<{}, State> {
     public static getStores(): Container.StoresList {
         return [ProductsReduceStore];
     }
@@ -22,8 +22,8 @@ class ProductsContainerClass extends React.Component<{}, State> {
 
     public render(): JSX.Element | JSX.Element[] {
         const productList = this.state.products.map(product => (
-            <ProductItemView
-                key={`product-item-${product.id}`}
+            <ProfileProductItemView
+                key={`profile-product-item-${product.id}`}
                 product={product}
             />
         ));
@@ -34,4 +34,4 @@ class ProductsContainerClass extends React.Component<{}, State> {
         }
     }
 }
-export const ProductsContainer = Container.create(ProductsContainerClass);
+export const ProductsContainer = Container.create(ProfileProductsContainerClass);

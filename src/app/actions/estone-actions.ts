@@ -4,7 +4,8 @@ export class EStoreAddProduct {
     private quantity: number,
     private productCondition: string,
     private details: string,
-    private productPrice: number
+    private productPrice: number,
+    private seller: string
   ) {}
 
   public get name(): string {
@@ -25,5 +26,9 @@ export class EStoreAddProduct {
 
   public get price(): number {
     return this.productPrice;
+  }
+
+  public get sellerUsername(): string {
+    return this.seller;
   }
 }

@@ -22,11 +22,12 @@ class ProductsReduceStoreClass extends ReduceStore<StoreState> {
             condition: action.condition,
             moreDetails: action.moreDetails,
             quantity: action.amount,
-            price: action.price
+            price: action.price,
+            seller: action.sellerUsername
         };
 
         return {
-            allProducts: [...state.allProducts, newProduct]
+            allProducts: [newProduct, ...state.allProducts]
         };
     };
 

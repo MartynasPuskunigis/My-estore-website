@@ -26,7 +26,8 @@ export class ProfileView extends React.Component<{}, State> {
             this.state.currentQuantity,
             this.state.currentCondition,
             this.state.currentMoreDetails,
-            this.state.currentPrice
+            this.state.currentPrice,
+            "admin"
         );
     };
 
