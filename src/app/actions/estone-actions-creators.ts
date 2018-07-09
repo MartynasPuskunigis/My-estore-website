@@ -1,9 +1,9 @@
 import { Dispatcher } from "simplr-flux";
 
-import { EStoreAddProduct } from "./estone-actions";
+import { EStoreAddNewProductAction, EStoreAddNewUserAction } from "./estone-actions";
 
 export namespace EStoreActionsCreators {
-  export function addProduct(
+  export function addProductForSale(
     productName: string,
     quantity: number,
     productCondition: string,
@@ -11,6 +11,14 @@ export namespace EStoreActionsCreators {
     price: number,
     seller: string
   ): void {
-    Dispatcher.dispatch(new EStoreAddProduct(productName, quantity, productCondition, details, price, seller));
+    Dispatcher.dispatch(new EStoreAddNewProductAction(productName, quantity, productCondition, details, price, seller));
+  }
+  export function addNewUser(
+    email: string,
+    username: string,
+    password: string,
+    country: string,
+  ): void {
+    Dispatcher.dispatch(new EStoreAddNewUserAction(email, username, password, country));
   }
 }

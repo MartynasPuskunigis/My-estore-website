@@ -1,6 +1,6 @@
 import { ReduceStore, ActionHandler } from "simplr-flux";
 
-import { EStoreAddProduct } from "./../actions/estone-actions";
+import { EStoreAddNewProductAction } from "./../actions/estone-actions";
 
 import { Product } from "./../contracts/Product";
 
@@ -11,25 +11,25 @@ interface StoreState {
 class ProductsReduceStoreClass extends ReduceStore<StoreState> {
     constructor() {
         super();
-        this.registerAction(EStoreAddProduct, this.onAddProduct);
+        //this.registerAction(EStoreAddProduct, this.onAddProduct);
     }
 
-    private onAddProduct: ActionHandler<EStoreAddProduct, StoreState> = (action, state) => {
-        const newId = Number(new Date().getTime());
-        const newProduct: Product = {
-            id: newId,
-            productName: action.name,
-            condition: action.condition,
-            moreDetails: action.moreDetails,
-            quantity: action.amount,
-            price: action.price,
-            seller: action.sellerUsername
-        };
+    // private onAddProduct: ActionHandler<EStoreAddProduct, StoreState> = (action, state) => {
+    //     const newId = Number(new Date().getTime());
+    //     const newProduct: Product = {
+    //         id: newId,
+    //         productName: action.name,
+    //         condition: action.condition,
+    //         moreDetails: action.moreDetails,
+    //         quantity: action.amount,
+    //         price: action.price,
+    //         seller: action.sellerUsername
+    //     };
 
-        return {
-            allProducts: [newProduct, ...state.allProducts]
-        };
-    };
+    //     return {
+    //         allProducts: [newProduct, ...state.allProducts]
+    //     };
+    // };
 
     //   protected static calculateState(state: StoreState): StoreState {
     //     switch (state.currentFilter) {
