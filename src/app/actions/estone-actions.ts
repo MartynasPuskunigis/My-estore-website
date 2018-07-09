@@ -1,59 +1,52 @@
+import { User } from "./../contracts/User";
+
 export class EStoreAddNewProductAction {
-  constructor(
-    private productName: string,
-    private quantity: number,
-    private productCondition: string,
-    private details: string,
-    private productPrice: number,
-    private seller: string
-  ) {}
+    constructor(
+        private productName: string,
+        private quantity: number,
+        private productCondition: string,
+        private details: string,
+        private productPrice: number,
+        private seller: string
+    ) {}
 
-  public get name(): string {
-    return this.productName;
-  }
+    public get name(): string {
+        return this.productName;
+    }
 
-  public get amount(): number {
-    return this.quantity;
-  }
+    public get amount(): number {
+        return this.quantity;
+    }
 
-  public get condition(): string {
-    return this.productCondition;
-  }
+    public get condition(): string {
+        return this.productCondition;
+    }
 
-  public get moreDetails(): string {
-    return this.details;
-  }
+    public get moreDetails(): string {
+        return this.details;
+    }
 
-  public get price(): number {
-    return this.productPrice;
-  }
+    public get price(): number {
+        return this.productPrice;
+    }
 
-  public get sellerUsername(): string {
-    return this.seller;
-  }
+    public get sellerUsername(): string {
+        return this.seller;
+    }
 }
 
 export class EStoreAddNewUserAction {
-  constructor(
-    private email: string,
-    private nickname: string,
-    private password: string,
-    private country: string
-  ) {}
+    constructor(private user: User) {}
 
-  public get userEmailAddress(): string {
-    return this.email;
-  }
+    public get newUser(): User {
+        return this.user;
+    }
+}
 
-  public get username(): string {
-    return this.nickname;
-  }
+export class EStoreChangeCurrentUserAction {
+    constructor(private newUser: User) {}
 
-  public get userPassword(): string {
-    return this.password;
-  }
-
-  public get userCountry(): string {
-    return this.country;
-  }
+    public get newCurrentUser(): User {
+        return this.newUser;
+    }
 }
