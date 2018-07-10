@@ -26,7 +26,6 @@ class ProfileContainerClass extends React.Component<Props, State> {
     }
 
     public static calculateState(state: State): State {
-        console.log("reset");
         return {
             currentUser: UsersReduceStore.getState().currentUser,
             allUsers: UsersReduceStore.getState().allUsers
@@ -38,9 +37,8 @@ class ProfileContainerClass extends React.Component<Props, State> {
     }
 
     public render(): JSX.Element {
-        console.log(this.state.currentUser.productsOnSale);
         const productList = this.state.currentUser.productsOnSale.map(product => (
-            <ProfileProductItemView key={`product-item-${product.id}`} product={product} />
+            <ProfileProductItemView key={`product-item-${product.id}`} product={product} userId={this.state.currentUser.id} />
         ));
         return (
             <div>

@@ -5,7 +5,8 @@ import {
     EStoreChangeCurrentUserAction,
     EStoreLogOutAction,
     EStoreLogInAction,
-    EStoreAddNewProductToUserAction
+    EStoreAddNewProductToUserAction,
+    EStoreDeleteProductFromUserAction
 } from "./../actions/estone-actions";
 
 import { User } from "./../contracts/User";
@@ -30,9 +31,10 @@ class UsersReduceStoreClass extends ReduceStore<StoreState> {
         super();
         this.registerAction(EStoreAddNewUserAction, this.onAddNewUser);
         this.registerAction(EStoreChangeCurrentUserAction, this.onChangeCurrentUser);
-        this.registerAction(EStoreLogOutAction, this.onLogOutClicked.bind(this));
-        this.registerAction(EStoreLogInAction, this.onLogInSubmit.bind(this));
-        this.registerAction(EStoreAddNewProductToUserAction, this.onNewProductAdded.bind(this));
+        this.registerAction(EStoreLogOutAction, this.onLogOutClicked);
+        this.registerAction(EStoreLogInAction, this.onLogInSubmit);
+        this.registerAction(EStoreAddNewProductToUserAction, this.onNewProductAdded);
+        this.registerAction(EStoreDeleteProductFromUserAction, this.onDeleteProduct);
     }
 
     private onAddNewUser: ActionHandler<EStoreAddNewUserAction, StoreState> = (action, state) => ({
@@ -72,7 +74,6 @@ class UsersReduceStoreClass extends ReduceStore<StoreState> {
     private onNewProductAdded: ActionHandler<EStoreAddNewProductToUserAction, StoreState> = (action, state) => {
         for (let i = 0; i < state.allUsers.length; i++) {
             if (state.allUsers[i].id === action.productSeller.id) {
-                console.log("nu veik");
                 const newUsersList = state.allUsers;
                 newUsersList[i].productsOnSale.push(action.productToAddToUser);
                 return {
@@ -83,6 +84,20 @@ class UsersReduceStoreClass extends ReduceStore<StoreState> {
         }
         return {
             ...state
+        };
+    };
+
+    private onDeleteProduct: ActionHandler<EStoreDeleteProductFromUserAction, StoreState> = (action, state) => {
+        const newUserList = state.allUsers;
+        for (let i = 0; i < newUserList.length; i++) {
+            if (newUserList[i].id === action.userToDeleteFromId) {
+                newUserList[i].productsOnSale = newUserList[i].productsOnSale.filter(product => product.id !== action.productToDeleteId);
+                break;
+            }
+        }
+        return {
+            ...state,
+            allUsers: [...newUserList]
         };
     };
 

@@ -49,3 +49,23 @@ export class EStoreAddNewProductToUserAction {
         return this.seller;
     }
 }
+
+export class EStoreDeleteProductAction {
+  constructor(private productId: number) {}
+
+  public get productToDeleteId(): number {
+      return this.productId;
+  }
+}
+
+export class EStoreDeleteProductFromUserAction {
+  constructor(private productId: number, private userId: number) {}
+
+  public get productToDeleteId(): number {
+      return this.productId;
+  }
+
+  public get userToDeleteFromId(): number {
+    return this.userId;
+  }
+}

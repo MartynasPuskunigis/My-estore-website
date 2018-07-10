@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import { EStoreActionsCreators } from "./../actions/estone-actions-creators";
 
@@ -37,31 +37,31 @@ export class RegisterView extends React.Component<{}, State> {
         this.setState({
             currentEmailInput: event.target.value
         });
-    }
+    };
 
     private onUsernameInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
         this.setState({
             currentUsernameInput: event.target.value
         });
-    }
+    };
 
     private onPasswordInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
         this.setState({
             currentPasswordInput: event.target.value
         });
-    }
+    };
 
     private onConfirmPasswordInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
         this.setState({
             currentConfirmPasswordInput: event.target.value
         });
-    }
+    };
 
     private onCountryInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
         this.setState({
             currentCountryInput: event.target.value
         });
-    }
+    };
 
     public render(): JSX.Element {
         return (

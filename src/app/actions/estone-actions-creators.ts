@@ -6,7 +6,9 @@ import {
     EStoreChangeCurrentUserAction,
     EStoreLogOutAction,
     EStoreLogInAction,
-    EStoreAddNewProductToUserAction
+    EStoreAddNewProductToUserAction,
+    EStoreDeleteProductAction,
+    EStoreDeleteProductFromUserAction
 } from "./estone-actions";
 
 import { User } from "./../contracts/User";
@@ -55,5 +57,10 @@ export namespace EStoreActionsCreators {
 
     export function logIn(username: string, password: string): void {
         Dispatcher.dispatch(new EStoreLogInAction(username, password));
+    }
+
+    export function deleteProduct(productToDeleteId: number, userToDeleteFromId: number): void {
+        Dispatcher.dispatch(new EStoreDeleteProductAction(productToDeleteId));
+        Dispatcher.dispatch(new EStoreDeleteProductFromUserAction(productToDeleteId, userToDeleteFromId));
     }
 }

@@ -78,25 +78,34 @@ export class ProfileView extends React.Component<{}, State> {
     };
 
     public render(): JSX.Element {
-        return (
-            <div>
-                <div>Your profile</div>
-                <div className="new-product-form">
-                    <div className="new-product-form-header">To add a new product, fill the form below</div>
-                    <div className="new-product-form-inputs">
-                        <input onChange={this.handleNameChange} type="text" placeholder="Product name" />
-                        <input onChange={this.handleQuantityChange} type="number" placeholder="Quantity" />
-                        <input onChange={this.handleConditionChange} type="text" placeholder="Condition" />
-                        <input onChange={this.handleDetailsChange} type="text" placeholder="More details" />
-                        <input onChange={this.handlePriceChange} type="number" placeholder="Price" />
+        if (this.state.currentUser.username !== "noUser") {
+            return (
+                <div>
+                    <div>Your profile</div>
+                    <div className="new-product-form">
+                        <div className="new-product-form-header">To add a new product, fill the form below</div>
+                        <div className="new-product-form-inputs">
+                            <input onChange={this.handleNameChange} type="text" placeholder="Product name" />
+                            <input onChange={this.handleQuantityChange} type="number" placeholder="Quantity" />
+                            <input onChange={this.handleConditionChange} type="text" placeholder="Condition" />
+                            <input onChange={this.handleDetailsChange} type="text" placeholder="More details" />
+                            <input onChange={this.handlePriceChange} type="number" placeholder="Price" />
+                        </div>
+                        <div>
+                            <button onClick={this.onSubmitClick}>Submit</button>
+                        </div>
+                        <ProfileContainer onNewCurrentUser={this.onNewLogIn} />
                     </div>
-                    <div>
-                        <button onClick={this.onSubmitClick}>Submit</button>
-                    </div>
-                    <ProfileContainer onNewCurrentUser={this.onNewLogIn} />
+                    <Link to="/">Go to home page</Link>
                 </div>
-                <Link to="/">Go to home page</Link>
-            </div>
-        );
+            );
+        } else {
+            return (
+                <div>
+                    <div>You're not suppose to be here!</div>
+                    <Link to="/">Go to home page</Link>
+                </div>
+            );
+        }
     }
 }

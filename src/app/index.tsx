@@ -12,7 +12,7 @@ import { ProfileView } from "./components/profile-view";
 class App extends React.Component {
   public render(): JSX.Element {
     return (
-      <BrowserRouter>
+      <BrowserRouter >
         <div>
           <NavigationView/>
           <Switch>

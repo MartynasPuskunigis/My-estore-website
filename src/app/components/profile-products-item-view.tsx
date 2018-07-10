@@ -1,16 +1,17 @@
 import * as React from "react";
 import { Product } from "./../contracts/product";
+import { EStoreActionsCreators } from "../actions/estone-actions-creators";
 
 export type ProfileProductsItemViewOnDeleteProductClickedHandler = (taskId: number) => void;
 
 interface Props {
     product: Product;
-    onDeleteClicked: ProfileProductsItemViewOnDeleteProductClickedHandler;
+    userId: number;
 }
 
 export class ProfileProductItemView extends React.Component<Props> {
     private onDeleteProductClick: React.MouseEventHandler<HTMLButtonElement> = event => {
-        this.props.onDeleteClicked(this.props.product.id);
+        EStoreActionsCreators.deleteProduct(this.props.product.id, this.props.userId);
     }
 
     public render(): JSX.Element | JSX.Element[] {
@@ -21,7 +22,7 @@ export class ProfileProductItemView extends React.Component<Props> {
                 <div className="cell">{this.props.product.condition}</div>
                 <div className="cell">{this.props.product.moreDetails}</div>
                 <div className="cell">{this.props.product.price}</div>
-                <div><button onClick={this.onDeleteProductClick}>Remove</button></div>
+                <div ><button onClick={this.onDeleteProductClick}>Remove</button></div>
             </div>
         );
     }
