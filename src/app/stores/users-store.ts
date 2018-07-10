@@ -72,13 +72,12 @@ class UsersReduceStoreClass extends ReduceStore<StoreState> {
     private onNewProductAdded: ActionHandler<EStoreAddNewProductToUserAction, StoreState> = (action, state) => {
         for (let i = 0; i < state.allUsers.length; i++) {
             if (state.allUsers[i].id === action.productSeller.id) {
-                const newUsersList: User[] = {
-                    ...state.allUsers
-                };
-                newUsersList[i].productsOnSale = [...newUsersList[i].productsOnSale, action.productToAddToUser];
+                console.log("nu veik");
+                const newUsersList = state.allUsers;
+                newUsersList[i].productsOnSale.push(action.productToAddToUser);
                 return {
-                    ...state,
-                    allUsers: newUsersList
+                    currentUser: newUsersList[i],
+                    allUsers: [...newUsersList]
                 };
             }
         }

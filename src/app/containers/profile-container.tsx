@@ -17,6 +17,7 @@ interface Props {
 
 interface State {
     currentUser: User;
+    allUsers: User[];
 }
 
 class ProfileContainerClass extends React.Component<Props, State> {
@@ -25,15 +26,16 @@ class ProfileContainerClass extends React.Component<Props, State> {
     }
 
     public static calculateState(state: State): State {
+        console.log("reset");
         return {
-            currentUser: UsersReduceStore.getState().currentUser
+            currentUser: UsersReduceStore.getState().currentUser,
+            allUsers: UsersReduceStore.getState().allUsers
         };
     }
 
-    // public componentDidUpdate(): void {
-    //     console.log("byb");
-    //     this.props.onNewCurrentUser(UsersReduceStore.getState().currentUser);
-    // }
+    public componentDidMount(): void {
+        this.props.onNewCurrentUser(UsersReduceStore.getState().currentUser);
+    }
 
     public render(): JSX.Element {
         console.log(this.state.currentUser.productsOnSale);
