@@ -8,7 +8,7 @@ interface State {
     currentUsernameInput: string;
     currentPasswordInput: string;
     currentConfirmPasswordInput: string;
-    currentCountry: string;
+    currentCountryInput: string;
 }
 
 export class RegisterView extends React.Component<{}, State> {
@@ -17,7 +17,7 @@ export class RegisterView extends React.Component<{}, State> {
         currentUsernameInput: "",
         currentPasswordInput: "",
         currentConfirmPasswordInput: "",
-        currentCountry: ""
+        currentCountryInput: ""
     };
 
     private onCreateAccountClick: React.MouseEventHandler<HTMLButtonElement> = event => {
@@ -26,12 +26,42 @@ export class RegisterView extends React.Component<{}, State> {
                 this.state.currentEmailInput,
                 this.state.currentUsernameInput,
                 this.state.currentPasswordInput,
-                this.state.currentCountry
+                this.state.currentCountryInput
             );
         } else {
             alert("Passwords don't match!");
         }
     };
+
+    private onEmailInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+        this.setState({
+            currentEmailInput: event.target.value
+        });
+    }
+
+    private onUsernameInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+        this.setState({
+            currentUsernameInput: event.target.value
+        });
+    }
+
+    private onPasswordInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+        this.setState({
+            currentPasswordInput: event.target.value
+        });
+    }
+
+    private onConfirmPasswordInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+        this.setState({
+            currentConfirmPasswordInput: event.target.value
+        });
+    }
+
+    private onCountryInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+        this.setState({
+            currentCountryInput: event.target.value
+        });
+    }
 
     public render(): JSX.Element {
         return (
@@ -40,11 +70,11 @@ export class RegisterView extends React.Component<{}, State> {
                 <div className="register-form">
                     <div className="register-form-header" />
                     <div className="register-form-inputs">
-                        <input type="text" placeholder="Email" />
-                        <input type="text" placeholder="Username" />
-                        <input type="password" placeholder="Password" />
-                        <input type="password" placeholder="Confirm password" />
-                        <input type="text" placeholder="Country" />
+                        <input onChange={this.onEmailInputChange} type="text" placeholder="Email" />
+                        <input onChange={this.onUsernameInputChange} type="text" placeholder="Username" />
+                        <input onChange={this.onPasswordInputChange} type="password" placeholder="Password" />
+                        <input onChange={this.onConfirmPasswordInputChange} type="password" placeholder="Confirm password" />
+                        <input onChange={this.onCountryInputChange} type="text" placeholder="Country" />
                     </div>
                     <div className="register-form-submit">
                         <button onClick={this.onCreateAccountClick}>Create account</button>

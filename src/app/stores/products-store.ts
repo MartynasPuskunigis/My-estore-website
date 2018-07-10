@@ -4,6 +4,8 @@ import { EStoreAddNewProductAction } from "./../actions/estone-actions";
 
 import { Product } from "./../contracts/Product";
 
+//import { EStoreActionsCreators } from "./../actions/estone-actions-creators";
+
 interface StoreState {
     allProducts: Product[];
 }
@@ -11,25 +13,12 @@ interface StoreState {
 class ProductsReduceStoreClass extends ReduceStore<StoreState> {
     constructor() {
         super();
-        //this.registerAction(EStoreAddProduct, this.onAddProduct);
+        this.registerAction(EStoreAddNewProductAction, this.onAddProduct);
     }
 
-    // private onAddProduct: ActionHandler<EStoreAddProduct, StoreState> = (action, state) => {
-    //     const newId = Number(new Date().getTime());
-    //     const newProduct: Product = {
-    //         id: newId,
-    //         productName: action.name,
-    //         condition: action.condition,
-    //         moreDetails: action.moreDetails,
-    //         quantity: action.amount,
-    //         price: action.price,
-    //         seller: action.sellerUsername
-    //     };
-
-    //     return {
-    //         allProducts: [newProduct, ...state.allProducts]
-    //     };
-    // };
+    private onAddProduct: ActionHandler<EStoreAddNewProductAction, StoreState> = (action, state) => ({
+        allProducts: [action.productToAdd, ...state.allProducts]
+    });
 
     //   protected static calculateState(state: StoreState): StoreState {
     //     switch (state.currentFilter) {

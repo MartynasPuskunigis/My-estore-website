@@ -30,7 +30,7 @@ class ProductsContainerClass extends React.Component<{}, State> {
         if (this.state.products.length !== 0) {
             return (<div>{productList}</div>);
         } else {
-            return (<div>There are currently no products on sale right now</div>);
+            return (<div>There are currently no products on sale</div>);
         }
     }
 }

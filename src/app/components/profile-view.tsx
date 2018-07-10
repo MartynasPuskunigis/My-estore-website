@@ -3,12 +3,21 @@ import { Link } from "react-router-dom";
 
 import { EStoreActionsCreators } from "./../actions/estone-actions-creators";
 
+import { User } from "./../contracts/User";
+
+import { loggedOutUser } from "./../stores/users-store";
+
+import { ProfileContainer } from "../containers/profile-container";
+
+import { ProfileContainerOnNewCurrentUserHandler } from "./../containers/profile-container";
+
 interface State {
     currentProductName: string;
     currentQuantity: number;
     currentCondition: string;
     currentMoreDetails: string;
     currentPrice: number;
+    currentUser: User;
 }
 
 export class ProfileView extends React.Component<{}, State> {
@@ -17,17 +26,18 @@ export class ProfileView extends React.Component<{}, State> {
         currentQuantity: 1,
         currentCondition: "",
         currentMoreDetails: "",
-        currentPrice: 0
+        currentPrice: 0,
+        currentUser: loggedOutUser
     };
 
     protected onSubmitClick: React.MouseEventHandler<HTMLButtonElement> = event => {
-        EStoreActionsCreators.addProduct(
+        EStoreActionsCreators.addProductForSale(
             this.state.currentProductName,
             this.state.currentQuantity,
             this.state.currentCondition,
             this.state.currentMoreDetails,
             this.state.currentPrice,
-            "admin"
+            this.state.currentUser
         );
     };
 
@@ -35,31 +45,37 @@ export class ProfileView extends React.Component<{}, State> {
         this.setState({
             currentProductName: event.target.value
         });
-    }
+    };
 
     protected handleQuantityChange: React.ChangeEventHandler<HTMLInputElement> = event => {
         this.setState({
             currentQuantity: Number(event.target.value)
         });
-    }
+    };
 
     protected handleConditionChange: React.ChangeEventHandler<HTMLInputElement> = event => {
         this.setState({
             currentCondition: event.target.value
         });
-    }
+    };
 
     protected handleDetailsChange: React.ChangeEventHandler<HTMLInputElement> = event => {
         this.setState({
             currentMoreDetails: event.target.value
         });
-    }
+    };
 
     protected handlePriceChange: React.ChangeEventHandler<HTMLInputElement> = event => {
         this.setState({
             currentPrice: Number(event.target.value)
         });
-    }
+    };
+
+    protected onNewLogIn: ProfileContainerOnNewCurrentUserHandler = newCurrentUser => {
+        this.setState({
+            currentUser: newCurrentUser
+        });
+    };
 
     public render(): JSX.Element {
         return (
@@ -77,6 +93,7 @@ export class ProfileView extends React.Component<{}, State> {
                     <div>
                         <button onClick={this.onSubmitClick}>Submit</button>
                     </div>
+                    <ProfileContainer onNewCurrentUser={this.onNewLogIn} />
                 </div>
                 <Link to="/">Go to home page</Link>
             </div>

@@ -1,37 +1,11 @@
 import { User } from "./../contracts/User";
+import { Product } from "../contracts/Product";
 
 export class EStoreAddNewProductAction {
-    constructor(
-        private productName: string,
-        private quantity: number,
-        private productCondition: string,
-        private details: string,
-        private productPrice: number,
-        private seller: string
-    ) {}
+    constructor(private product: Product) {}
 
-    public get name(): string {
-        return this.productName;
-    }
-
-    public get amount(): number {
-        return this.quantity;
-    }
-
-    public get condition(): string {
-        return this.productCondition;
-    }
-
-    public get moreDetails(): string {
-        return this.details;
-    }
-
-    public get price(): number {
-        return this.productPrice;
-    }
-
-    public get sellerUsername(): string {
-        return this.seller;
+    public get productToAdd(): Product {
+        return this.product;
     }
 }
 
@@ -48,5 +22,30 @@ export class EStoreChangeCurrentUserAction {
 
     public get newCurrentUser(): User {
         return this.newUser;
+    }
+}
+
+export class EStoreLogOutAction {}
+
+export class EStoreLogInAction {
+    constructor(private nickname: string, private password: string) {}
+
+    public get username(): string {
+        return this.nickname;
+    }
+
+    public get userPassword(): string {
+        return this.password;
+    }
+}
+
+export class EStoreAddNewProductToUserAction {
+    constructor(private newUserProduct: Product, private seller: User) {}
+
+    public get productToAddToUser(): Product {
+        return this.newUserProduct;
+    }
+    public get productSeller(): User {
+        return this.seller;
     }
 }

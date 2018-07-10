@@ -1,11 +1,8 @@
 import * as React from "react";
 import { Product } from "./../contracts/product";
 
-// export type InputItemViewOnCheckboxClickedHandler = (taskId: number, isChecked: boolean) => void;
-
 interface Props {
     product: Product;
-    // onCheckboxClicked: InputItemViewOnCheckboxClickedHandler;
 }
 
 export class ProductItemView extends React.Component<Props> {
@@ -22,7 +19,7 @@ export class ProductItemView extends React.Component<Props> {
                 <div className="cell">{this.props.product.moreDetails}</div>
                 <div className="cell">{this.props.product.price}</div>
                 <div className="cell">{this.props.product.seller}</div>
-                <div className="cell"><button>Add to cart</button></div>
+                <div className="cell"><button>Remove</button></div>
             </div>
         );
     }
