@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { EStoreActionsCreators } from "./../actions/estone-actions-creators";
+import { AppHistory } from "../router/app-history";
 
 interface State {
     currentEmailInput: string;
@@ -28,6 +29,7 @@ export class RegisterView extends React.Component<{}, State> {
                 this.state.currentPasswordInput,
                 this.state.currentCountryInput
             );
+            AppHistory.push({pathname: "/"});
         } else {
             alert("Passwords don't match!");
         }

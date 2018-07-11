@@ -34,6 +34,7 @@ class NavigationContainerClass extends React.Component<{}, State> {
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/login">Login</NavLink>
                     <NavLink to="/register">Register</NavLink>
+                    <NavLink to="/map">Map</NavLink>
                 </div>
             );
         } else {
@@ -45,6 +46,7 @@ class NavigationContainerClass extends React.Component<{}, State> {
                     <NavLink onClick={this.onLogOutClick} to="/">
                         Log out
                     </NavLink>
+                    <NavLink to="/map">Map</NavLink>
                 </div>
             );
         }

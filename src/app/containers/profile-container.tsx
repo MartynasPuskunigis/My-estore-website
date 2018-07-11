@@ -32,7 +32,7 @@ class ProfileContainerClass extends React.Component<Props, State> {
         };
     }
 
-    public componentDidMount(): void {
+    public componentWillMount(): void {
         this.props.onNewCurrentUser(UsersReduceStore.getState().currentUser);
     }
 
@@ -40,16 +40,19 @@ class ProfileContainerClass extends React.Component<Props, State> {
         const productList = this.state.currentUser.productsOnSale.map(product => (
             <ProfileProductItemView key={`product-item-${product.id}`} product={product} userId={this.state.currentUser.id} />
         ));
-        return (
-            <div>
-                <div> Your posted products on sale: </div>
-                {this.state.currentUser.productsOnSale.length !== 0 ? (
-                    <div>{productList}</div>
-                ) : (
-                    <div>You currently have no products on sale</div>
-                )}
-            </div>
-        );
+        if (this.state.currentUser.username !== "noUser") {
+            return (
+                <div>
+                    <div> Your posted products on sale: </div>
+                    {this.state.currentUser.productsOnSale.length !== 0 ? (
+                        <div>{productList}</div>
+                    ) : (
+                        <div>You currently have no products on sale</div>
+                    )}
+                </div>
+            );
+        }
+        return <div>You're not logged in!</div>;
     }
 }
 

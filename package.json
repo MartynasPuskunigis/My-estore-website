@@ -100,6 +100,10 @@
         }
     },
     "dependencies": {
+        "@types/google-map-react": "^0.23.4",
+        "@types/recompose": "^0.26.1",
+        "google-map-react": "^1.0.5",
+        "react-google-maps": "^9.4.5",
         "react-router": "^4.3.1",
         "react-router-dom": "^4.3.1",
         "simplr-flux": "^2.3.0"

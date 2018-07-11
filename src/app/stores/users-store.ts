@@ -10,6 +10,7 @@ import {
 } from "./../actions/estone-actions";
 
 import { User } from "./../contracts/User";
+import { AppHistory } from "../router/app-history";
 
 interface StoreState {
     allUsers: User[];
@@ -56,12 +57,16 @@ class UsersReduceStoreClass extends ReduceStore<StoreState> {
         for (let i = 0; i < state.allUsers.length; i++) {
             if (state.allUsers[i].username === action.username) {
                 if (state.allUsers[i].password === action.userPassword) {
+                    AppHistory.push({pathname: "/"});
                     return {
                         allUsers: [...state.allUsers],
                         currentUser: state.allUsers[i]
                     };
                 } else {
                     alert("Incorrect password!");
+                    return {
+                        ...state
+                    };
                 }
             }
         }
