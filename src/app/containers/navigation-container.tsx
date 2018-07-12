@@ -30,37 +30,47 @@ class NavigationContainerClass extends React.Component<{}, State> {
     public render(): JSX.Element {
         if (this.state.currentUser.username === "noUser") {
             return (
-                <div className="menu-items">
-                    <NavLink className="menu-items-item" to="/">
-                        Home
-                    </NavLink>
-                    <NavLink className="menu-items-item" to="/login">
-                        Login
-                    </NavLink>
-                    <NavLink className="menu-items-item" to="/register">
-                        Register
-                    </NavLink>
-                    <NavLink className="menu-items-item" to="/map">
-                        Map
-                    </NavLink>
+                <div className="menu">
+                    <div className="wrapper">
+                        <div className="menu-logo">Logo</div>
+                        <div className="menu-items">
+                            <NavLink className="menu-button" to="/">
+                                Home
+                            </NavLink>
+                            <NavLink className="menu-button" to="/login">
+                                Login
+                            </NavLink>
+                            <NavLink className="menu-button" to="/register">
+                                Register
+                            </NavLink>
+                            <NavLink className="menu-button" to="/map">
+                                Map
+                            </NavLink>
+                        </div>
+                    </div>
                 </div>
             );
         } else {
             return (
-                <div className="menu-items">
-                    <div className="menu-items-greeting">Hi, {this.state.currentUser.username}</div>
-                    <NavLink className="menu-items-item" to="/">
-                        Home
-                    </NavLink>
-                    <NavLink className="menu-items-item" to="/profile">
-                        My profile
-                    </NavLink>
-                    <NavLink className="menu-items-item" onClick={this.onLogOutClick} to="/">
-                        Log out
-                    </NavLink>
-                    <NavLink className="menu-items-item" to="/map">
-                        Map
-                    </NavLink>
+                <div className="menu">
+                    <div className="wrapper">
+                        <div className="menu-logo">Logo</div>
+                        <div className="menu-items">
+                            <div className="menu-greeting">Hi, {this.state.currentUser.username}</div>
+                            <NavLink className="menu-button" to="/">
+                                Home
+                            </NavLink>
+                            <NavLink className="menu-button" to="/profile">
+                                My profile
+                            </NavLink>
+                            <NavLink className="menu-button" onClick={this.onLogOutClick} to="/">
+                                Log out
+                            </NavLink>
+                            <NavLink className="menu-button" to="/map">
+                                Map
+                            </NavLink>
+                        </div>
+                    </div>
                 </div>
             );
         }

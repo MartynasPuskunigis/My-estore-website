@@ -1,8 +1,25 @@
-.menu-items {
+.menu {
     display: flex;
     justify-content: center;
     background-color: #ff6107;
-    .menu-items-item {
-        
+
+    .wrapper {
+        max-width: 1024px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .menu-items {
+            display: flex;
+            justify-content: space-between;
+            .menu-button{
+                padding: 10px;
+            }
+
+            .menu-greeting {
+                padding: 10px;
+            }
+        }
     }
 }
