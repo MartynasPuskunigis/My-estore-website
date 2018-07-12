@@ -1,15 +1,15 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import { EStoreActionsCreators } from "./../actions/estone-actions-creators";
+import { EStoreActionsCreators } from "../../actions/estone-actions-creators";
 
-import { User } from "./../contracts/User";
+import { User } from "../../contracts/User";
 
-import { loggedOutUser } from "./../stores/users-store";
+import { loggedOutUser } from "../../stores/users-store";
 
-import { ProfileContainer } from "../containers/profile-container";
+import { ProfileContainer } from "../../containers/profile-container";
 
-import { ProfileContainerOnNewCurrentUserHandler } from "./../containers/profile-container";
+import { ProfileContainerOnNewCurrentUserHandler } from "../../containers/profile-container";
 
 interface State {
     currentProductName: string;

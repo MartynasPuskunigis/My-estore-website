@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import { EStoreActionsCreators } from "./../actions/estone-actions-creators";
-import { AppHistory } from "../router/app-history";
+import { EStoreActionsCreators } from "../../actions/estone-actions-creators";
+import { AppHistory } from "../../router/app-history";
 
 interface State {
     currentEmailInput: string;

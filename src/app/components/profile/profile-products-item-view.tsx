@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Product } from "./../contracts/product";
-import { EStoreActionsCreators } from "../actions/estone-actions-creators";
+import { Product } from "../../contracts/Product";
+import { EStoreActionsCreators } from "../../actions/estone-actions-creators";
 
 export type ProfileProductsItemViewOnDeleteProductClickedHandler = (taskId: number) => void;
 

@@ -3,7 +3,7 @@ import { Container } from "flux/utils";
 
 import { Product } from "./../contracts/Product";
 import { ProductsReduceStore } from "./../stores/products-store";
-import { ProductItemView } from "../components/product-item-view";
+import { ProductItemView } from "../components/home/product-item-view";
 
 interface State {
     products: Product[];
@@ -28,9 +28,9 @@ class ProductsContainerClass extends React.Component<{}, State> {
             />
         ));
         if (this.state.products.length !== 0) {
-            return (<div>{productList}</div>);
+            return (<div className="product-list-items">{productList}</div>);
         } else {
-            return (<div>There are currently no products on sale</div>);
+            return (<div className="product-list-nodata">There are currently no products on sale</div>);
         }
     }
 }

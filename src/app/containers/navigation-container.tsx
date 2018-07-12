@@ -30,23 +30,37 @@ class NavigationContainerClass extends React.Component<{}, State> {
     public render(): JSX.Element {
         if (this.state.currentUser.username === "noUser") {
             return (
-                <div>
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/login">Login</NavLink>
-                    <NavLink to="/register">Register</NavLink>
-                    <NavLink to="/map">Map</NavLink>
+                <div className="menu-items">
+                    <NavLink className="menu-items-item" to="/">
+                        Home
+                    </NavLink>
+                    <NavLink className="menu-items-item" to="/login">
+                        Login
+                    </NavLink>
+                    <NavLink className="menu-items-item" to="/register">
+                        Register
+                    </NavLink>
+                    <NavLink className="menu-items-item" to="/map">
+                        Map
+                    </NavLink>
                 </div>
             );
         } else {
             return (
-                <div>
-                    <div>Hi, {this.state.currentUser.username}</div>
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/profile">My profile</NavLink>
-                    <NavLink onClick={this.onLogOutClick} to="/">
+                <div className="menu-items">
+                    <div className="menu-items-greeting">Hi, {this.state.currentUser.username}</div>
+                    <NavLink className="menu-items-item" to="/">
+                        Home
+                    </NavLink>
+                    <NavLink className="menu-items-item" to="/profile">
+                        My profile
+                    </NavLink>
+                    <NavLink className="menu-items-item" onClick={this.onLogOutClick} to="/">
                         Log out
                     </NavLink>
-                    <NavLink to="/map">Map</NavLink>
+                    <NavLink className="menu-items-item" to="/map">
+                        Map
+                    </NavLink>
                 </div>
             );
         }

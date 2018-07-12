@@ -39,10 +39,7 @@ class ProductsReduceStoreClass extends ReduceStore<StoreState> {
                 filteredProducts: [...state.allProducts]
             };
         }
-        const newFilteredProducts = state.allProducts.filter(x => {
-            console.log(x.productName.toLowerCase.toString(), action.userInput.toString());
-            x.productName.toLowerCase.toString().startsWith(action.userInput.toLowerCase.toString());
-        });
+        const newFilteredProducts = state.allProducts.filter(x => x.productName.toLowerCase().startsWith(action.userInput.toLowerCase()));
         return {
             ...state,
             filteredProducts: newFilteredProducts

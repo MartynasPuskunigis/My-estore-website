@@ -7,7 +7,7 @@ import { User } from "./../contracts/User";
 
 import { UsersReduceStore } from "./../stores/users-store";
 
-import { ProfileProductItemView } from "./../components/profile-products-item-view";
+import { ProfileProductItemView } from "../components/profile/profile-products-item-view";
 
 export type ProfileContainerOnNewCurrentUserHandler = (currentUser: User) => void;
 
