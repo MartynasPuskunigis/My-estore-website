@@ -8,7 +8,8 @@ import {
     EStoreLogInAction,
     EStoreAddNewProductToUserAction,
     EStoreDeleteProductAction,
-    EStoreDeleteProductFromUserAction
+    EStoreDeleteProductFromUserAction,
+    EStoreSearchUserInputAction
 } from "./estone-actions";
 
 import { User } from "./../contracts/User";
@@ -62,5 +63,9 @@ export namespace EStoreActionsCreators {
     export function deleteProduct(productToDeleteId: number, userToDeleteFromId: number): void {
         Dispatcher.dispatch(new EStoreDeleteProductAction(productToDeleteId));
         Dispatcher.dispatch(new EStoreDeleteProductFromUserAction(productToDeleteId, userToDeleteFromId));
+    }
+
+    export function searchForUserInput(input: string): void {
+        Dispatcher.dispatch(new EStoreSearchUserInputAction(input));
     }
 }

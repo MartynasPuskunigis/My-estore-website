@@ -16,7 +16,7 @@ class ProductsContainerClass extends React.Component<{}, State> {
 
     public static calculateState(state: State): State {
         return {
-            products: ProductsReduceStore.getState().allProducts
+            products: ProductsReduceStore.getState().filteredProducts
         };
     }
 

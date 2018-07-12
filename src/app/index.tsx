@@ -8,7 +8,7 @@ import { HomeView } from "./components/home-view";
 import { NavigationView } from "./components/navigation-view";
 import { NotFoundView } from "./components/not-found-view";
 import { ProfileView } from "./components/profile-view";
-import { WorldMapView } from "./components/map-view";
+//import { WorldMapView } from "./components/map-view";
 import { AppHistory } from "./router/app-history";
 
 class App extends React.Component {

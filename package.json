@@ -38,12 +38,16 @@
         "dependencies": {
             "action-emitter": "npm:action-emitter@^0.2.1",
             "querystring": "npm:querystring@^0.2.0",
+            "react-google-maps": "npm:react-google-maps@^9.4.5",
             "react-router": "npm:react-router@^4.2.0",
             "react-router-dom": "npm:react-router-dom@^4.2.2",
             "simplr-flux": "npm:simplr-flux@^2.3.0"
         },
         "devDependencies": {},
         "peerDependencies": {
+            "@types/googlemaps": "npm:@types/googlemaps@^3.0.0",
+            "@types/markerclustererplus": "npm:@types/markerclustererplus@^2.1.29",
+            "@types/react": "npm:@types/react@^16.0.0",
             "css": "npm:systemjs-plugin-css@^0.1.35",
             "assert": "npm:jspm-nodelibs-assert@^0.2.0",
             "buffer": "npm:jspm-nodelibs-buffer@^0.2.0",
@@ -83,10 +87,16 @@
                     "test.js"
                 ]
             },
-            "npm:pbkdf2@3.0.14": {
+            "npm:lodash@4.17.10": {
+                "map": {
+                    "buffer": "@empty",
+                    "process": "@empty"
+                }
+            },
+            "npm:pbkdf2@3.0.16": {
                 "main": "browser.js"
             },
-            "npm:safe-buffer@5.1.1": {
+            "npm:safe-buffer@5.1.2": {
                 "browser": "index.js"
             },
             "npm:tslib@1.9.0": {

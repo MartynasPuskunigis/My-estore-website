@@ -1,6 +1,6 @@
 import { ReduceStore, ActionHandler } from "simplr-flux";
 
-import { EStoreAddNewProductAction, EStoreDeleteProductAction } from "./../actions/estone-actions";
+import { EStoreAddNewProductAction, EStoreDeleteProductAction, EStoreSearchUserInputAction } from "./../actions/estone-actions";
 
 import { Product } from "./../contracts/Product";
 
@@ -8,6 +8,7 @@ import { Product } from "./../contracts/Product";
 
 interface StoreState {
     allProducts: Product[];
+    filteredProducts: Product[];
 }
 
 class ProductsReduceStoreClass extends ReduceStore<StoreState> {
@@ -15,18 +16,38 @@ class ProductsReduceStoreClass extends ReduceStore<StoreState> {
         super();
         this.registerAction(EStoreAddNewProductAction, this.onAddProduct);
         this.registerAction(EStoreDeleteProductAction, this.onDeleteProduct);
+        this.registerAction(EStoreSearchUserInputAction, this.onSearchProduct);
     }
 
     private onAddProduct: ActionHandler<EStoreAddNewProductAction, StoreState> = (action, state) => ({
+        filteredProducts: [action.productToAdd, ...state.filteredProducts],
         allProducts: [action.productToAdd, ...state.allProducts]
     });
 
     private onDeleteProduct: ActionHandler<EStoreDeleteProductAction, StoreState> = (action, state) => {
         const newProductList = state.allProducts.filter(product => product.id !== action.productToDeleteId);
         return {
+            filteredProducts: newProductList,
             allProducts: newProductList
         };
-    }
+    };
+
+    private onSearchProduct: ActionHandler<EStoreSearchUserInputAction, StoreState> = (action, state) => {
+        if (action.userInput === "") {
+            return {
+                ...state,
+                filteredProducts: [...state.allProducts]
+            };
+        }
+        const newFilteredProducts = state.allProducts.filter(x => {
+            console.log(x.productName.toLowerCase.toString(), action.userInput.toString());
+            x.productName.toLowerCase.toString().startsWith(action.userInput.toLowerCase.toString());
+        });
+        return {
+            ...state,
+            filteredProducts: newFilteredProducts
+        };
+    };
 
     //   protected static calculateState(state: StoreState): StoreState {
     //     switch (state.currentFilter) {
@@ -50,7 +71,8 @@ class ProductsReduceStoreClass extends ReduceStore<StoreState> {
 
     public getInitialState(): StoreState {
         return {
-            allProducts: []
+            allProducts: [],
+            filteredProducts: []
         };
     }
 }

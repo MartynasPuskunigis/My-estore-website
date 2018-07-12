@@ -51,21 +51,29 @@ export class EStoreAddNewProductToUserAction {
 }
 
 export class EStoreDeleteProductAction {
-  constructor(private productId: number) {}
+    constructor(private productId: number) {}
 
-  public get productToDeleteId(): number {
-      return this.productId;
-  }
+    public get productToDeleteId(): number {
+        return this.productId;
+    }
 }
 
 export class EStoreDeleteProductFromUserAction {
-  constructor(private productId: number, private userId: number) {}
+    constructor(private productId: number, private userId: number) {}
 
-  public get productToDeleteId(): number {
-      return this.productId;
-  }
+    public get productToDeleteId(): number {
+        return this.productId;
+    }
 
-  public get userToDeleteFromId(): number {
-    return this.userId;
-  }
+    public get userToDeleteFromId(): number {
+        return this.userId;
+    }
+}
+
+export class EStoreSearchUserInputAction {
+    constructor(private input: string) {}
+
+    public get userInput(): string {
+        return this.input;
+    }
 }

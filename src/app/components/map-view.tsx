@@ -1,7 +1,7 @@
 import * as React from "react";
 import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 import { withProps, compose } from "recompose";
-import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
+//import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
 
 //import { GOOGLE_STYLE } from "./google-style";
 
@@ -23,7 +23,7 @@ const MyMapComponent = compose(
     // tslint:disable-next-line:no-any
 )((props: any) => (
     <GoogleMap defaultZoom={2} center={{ lat: 40, lng: 11 }}>
-        <MarkerClusterer
+        {/* <MarkerClusterer
             defaultGridSize={30}
             defaultAverageCenter={true}
             // imagePath={`${Config.STATIC_URI}/marker-cluster`}
@@ -31,7 +31,7 @@ const MyMapComponent = compose(
             imageSizes={[25, 25, 25, 25, 25]}
         >
             {props.children}
-        </MarkerClusterer>
+        </MarkerClusterer> */}
     </GoogleMap>
 ));
 
