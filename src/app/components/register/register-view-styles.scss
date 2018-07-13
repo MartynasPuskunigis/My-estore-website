@@ -1,0 +1,60 @@
+.register-page {
+    background-color: #292725;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .register-form {
+        padding: 150px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .register-form-header {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .register-form-inputs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .register-form-input {
+                padding: 10px 0px;
+
+                input {
+                    color: white;
+                    padding: 10px;
+                    font-size: 16px;
+                    background-color: #c40018;
+                    outline: none;
+                    border: none;
+                    border-radius: 8px;
+                }
+
+                input::placeholder {
+                    color: white;
+                }
+            }
+        }
+
+        .register-form-submit {
+            padding: 4px;
+
+            button {
+                background-color: #e9290f;
+                border: none;
+                color: white;
+                padding: 5px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                width: 292px;
+                border-radius: 4px;
+            }
+        }
+    }
+}

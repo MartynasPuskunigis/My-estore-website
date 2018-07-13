@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { EStoreActionsCreators } from "../../actions/estone-actions-creators";
 import { AppHistory } from "../../router/app-history";
 
+import "./register-view-styles.css";
+
 interface State {
     currentEmailInput: string;
     currentUsernameInput: string;
@@ -29,7 +31,7 @@ export class RegisterView extends React.Component<{}, State> {
                 this.state.currentPasswordInput,
                 this.state.currentCountryInput
             );
-            AppHistory.push({pathname: "/"});
+            AppHistory.push({ pathname: "/" });
         } else {
             alert("Passwords don't match!");
         }
@@ -67,16 +69,25 @@ export class RegisterView extends React.Component<{}, State> {
 
     public render(): JSX.Element {
         return (
-            <div>
-                <div>This is the registration page</div>
+            <div className="register-page">
                 <div className="register-form">
-                    <div className="register-form-header" />
+                    <div className="register-form-header">This is the registration page</div>
                     <div className="register-form-inputs">
-                        <input onChange={this.onEmailInputChange} type="text" placeholder="Email" />
-                        <input onChange={this.onUsernameInputChange} type="text" placeholder="Username" />
-                        <input onChange={this.onPasswordInputChange} type="password" placeholder="Password" />
-                        <input onChange={this.onConfirmPasswordInputChange} type="password" placeholder="Confirm password" />
-                        <input onChange={this.onCountryInputChange} type="text" placeholder="Country" />
+                        <div className="register-form-input">
+                            <input onChange={this.onEmailInputChange} type="text" placeholder="Email" />
+                        </div>
+                        <div className="register-form-input">
+                            <input onChange={this.onUsernameInputChange} type="text" placeholder="Username" />
+                        </div>
+                        <div className="register-form-input">
+                            <input onChange={this.onPasswordInputChange} type="password" placeholder="Password" />
+                        </div>
+                        <div className="register-form-input">
+                            <input onChange={this.onConfirmPasswordInputChange} type="password" placeholder="Confirm password" />
+                        </div>
+                        <div className="register-form-input">
+                            <input onChange={this.onCountryInputChange} type="text" placeholder="Country" />
+                        </div>
                     </div>
                     <div className="register-form-submit">
                         <button onClick={this.onCreateAccountClick}>Create account</button>

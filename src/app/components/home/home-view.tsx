@@ -7,10 +7,10 @@ import "./home-view-styles.css";
 export class HomeView extends React.Component {
     public render(): JSX.Element {
         return (
-            <div className="banner">
+            <div className="homepage">
                 <div className="wrapper">
-                    <div className="header">
-                        <div className="header-text">This is the home page</div>
+                    <div className="banner">
+                        <div className="banner-text">This is the home page</div>
                     </div>
                     <HomeProductsView />
                 </div>
