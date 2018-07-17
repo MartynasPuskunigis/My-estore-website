@@ -1,4 +1,4 @@
-import { User } from "./../contracts/User";
+import { User } from "../contracts/User";
 import { Product } from "../contracts/Product";
 
 export class EStoreAddNewProductAction {

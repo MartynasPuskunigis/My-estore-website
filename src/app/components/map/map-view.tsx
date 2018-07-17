@@ -1,7 +1,9 @@
 import * as React from "react";
 import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 import { withProps, compose } from "recompose";
-//import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
+import Marker from "react-google-maps/lib/components/Marker";
+import { demoMapStyle } from "./demoMapStyle";
+import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
 
 //import { GOOGLE_STYLE } from "./google-style";
 
@@ -15,23 +17,17 @@ const MyMapComponent = compose(
     withProps({
         googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`,
         loadingElement: <div style={{ height: "100%" }} />,
-        containerElement: <div style={{ width: "1024px", height: "706px" }} />,
+        containerElement: <div style={{ width: "100%", height: "100%" }} />,
         mapElement: <div style={{ height: "100%" }} />
     }),
     withScriptjs,
     withGoogleMap
     // tslint:disable-next-line:no-any
 )((props: any) => (
-    <GoogleMap defaultZoom={2} center={{ lat: 40, lng: 11 }}>
-        {/* <MarkerClusterer
-            defaultGridSize={30}
-            defaultAverageCenter={true}
-            // imagePath={`${Config.STATIC_URI}/marker-cluster`}
-            imageExtension=".png"
-            imageSizes={[25, 25, 25, 25, 25]}
-        >
-            {props.children}
-        </MarkerClusterer> */}
+    <GoogleMap defaultZoom={7} center={{ lat: 55.1694, lng: 23.8813 }} defaultOptions={{ styles: demoMapStyle }}>
+        <MarkerClusterer onClick={props.onMarkerClustererClick} averageCenter enableRetinaIcons gridSize={60}>
+            {props.markers.map(marker => <Marker key={marker.photo_id} position={{ lat: marker.latitude, lng: marker.longitude }} />)}
+        </MarkerClusterer>
     </GoogleMap>
 ));
 

@@ -90,6 +90,7 @@ SystemJS.config({
     "react-google-maps": "npm:react-google-maps@9.4.5",
     "react-router": "npm:react-router@4.2.0",
     "react-router-dom": "npm:react-router-dom@4.2.2",
+    "recompose": "npm:recompose@0.27.1",
     "simplr-flux": "npm:simplr-flux@2.3.0",
     "stream": "npm:jspm-nodelibs-stream@0.2.1",
     "string_decoder": "npm:jspm-nodelibs-string_decoder@0.2.2",
@@ -583,6 +584,16 @@ SystemJS.config({
       "map": {
         "loose-envify": "npm:loose-envify@1.4.0",
         "object-assign": "npm:object-assign@4.1.1"
+      }
+    },
+    "npm:recompose@0.27.1": {
+      "map": {
+        "symbol-observable": "npm:symbol-observable@1.2.0",
+        "change-emitter": "npm:change-emitter@0.1.6",
+        "babel-runtime": "npm:babel-runtime@6.26.0",
+        "fbjs": "npm:fbjs@0.8.17",
+        "hoist-non-react-statics": "npm:hoist-non-react-statics@2.5.5",
+        "react-lifecycles-compat": "npm:react-lifecycles-compat@3.0.4"
       }
     }
   }

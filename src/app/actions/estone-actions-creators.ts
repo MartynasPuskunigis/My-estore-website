@@ -12,8 +12,8 @@ import {
     EStoreSearchUserInputAction
 } from "./estone-actions";
 
-import { User } from "./../contracts/User";
-import { Product } from "./../contracts/Product";
+import { User } from "../contracts/User";
+import { Product } from "../contracts/Product";
 
 export namespace EStoreActionsCreators {
     export function addProductForSale(
