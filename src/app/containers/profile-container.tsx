@@ -3,9 +3,9 @@ import { Container } from "flux/utils";
 
 //import { EStoreActionsCreators } from "./../actions/estone-actions-creators";
 
-import { User } from "./../contracts/User";
+import { User } from "../contracts/User";
 
-import { UsersReduceStore } from "./../stores/users-store";
+import { UsersReduceStore } from "../stores/users-store";
 
 import { ProfileProductItemView } from "../components/profile/profile-products-item-view";
 

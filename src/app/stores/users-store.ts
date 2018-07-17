@@ -7,14 +7,17 @@ import {
     EStoreLogInAction,
     EStoreAddNewProductToUserAction,
     EStoreDeleteProductFromUserAction
-} from "./../actions/estone-actions";
+} from "../actions/estone-actions";
 
-import { User } from "./../contracts/User";
+import { User } from "../contracts/User";
 import { AppHistory } from "../router/app-history";
+import { UserMarker } from "../contracts/UserMarker";
+import { CountryInfo } from "./../contracts/countries";
 
 interface StoreState {
     allUsers: User[];
     currentUser: User;
+    usersCoordinates: UserMarker[];
 }
 
 export const loggedOutUser = {
@@ -38,17 +41,33 @@ class UsersReduceStoreClass extends ReduceStore<StoreState> {
         this.registerAction(EStoreDeleteProductFromUserAction, this.onDeleteProduct);
     }
 
-    private onAddNewUser: ActionHandler<EStoreAddNewUserAction, StoreState> = (action, state) => ({
-        ...state,
-        allUsers: [...state.allUsers, action.newUser]
-    });
+    private onAddNewUser: ActionHandler<EStoreAddNewUserAction, StoreState> = (action, state) => {
+        const newMarker: UserMarker = {
+            userId: action.newUser.id,
+            latitude: -90,
+            longitude: -180
+        };
+        for (let i = 0; i < CountryInfo.length; i++) {
+            if (CountryInfo[i].name.toLowerCase() === action.newUser.country.toLowerCase()) {
+                newMarker.latitude = CountryInfo[i].latlng[0];
+                newMarker.longitude = CountryInfo[i].latlng[1];
+            }
+        }
+        return {
+            ...state,
+            usersCoordinates: [...state.usersCoordinates, newMarker],
+            allUsers: [...state.allUsers, action.newUser]
+        };
+    };
 
     private onChangeCurrentUser: ActionHandler<EStoreChangeCurrentUserAction, StoreState> = (action, state) => ({
+        ...state,
         allUsers: [...state.allUsers],
         currentUser: action.newCurrentUser
     });
 
     private onLogOutClicked: ActionHandler<EStoreLogOutAction, StoreState> = (action, state) => ({
+        ...state,
         allUsers: [...state.allUsers],
         currentUser: loggedOutUser
     });
@@ -57,8 +76,9 @@ class UsersReduceStoreClass extends ReduceStore<StoreState> {
         for (let i = 0; i < state.allUsers.length; i++) {
             if (state.allUsers[i].username === action.username) {
                 if (state.allUsers[i].password === action.userPassword) {
-                    AppHistory.push({pathname: "/"});
+                    AppHistory.push({ pathname: "/" });
                     return {
+                        ...state,
                         allUsers: [...state.allUsers],
                         currentUser: state.allUsers[i]
                     };
@@ -82,6 +102,7 @@ class UsersReduceStoreClass extends ReduceStore<StoreState> {
                 const newUsersList = state.allUsers;
                 newUsersList[i].productsOnSale.push(action.productToAddToUser);
                 return {
+                    ...state,
                     currentUser: newUsersList[i],
                     allUsers: [...newUsersList]
                 };
@@ -109,7 +130,8 @@ class UsersReduceStoreClass extends ReduceStore<StoreState> {
     public getInitialState(): StoreState {
         return {
             allUsers: [],
-            currentUser: loggedOutUser
+            currentUser: loggedOutUser,
+            usersCoordinates: []
         };
     }
 }

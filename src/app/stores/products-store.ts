@@ -1,8 +1,8 @@
 import { ReduceStore, ActionHandler } from "simplr-flux";
 
-import { EStoreAddNewProductAction, EStoreDeleteProductAction, EStoreSearchUserInputAction } from "./../actions/estone-actions";
+import { EStoreAddNewProductAction, EStoreDeleteProductAction, EStoreSearchUserInputAction } from "../actions/estone-actions";
 
-import { Product } from "./../contracts/Product";
+import { Product } from "../contracts/Product";
 
 //import { EStoreActionsCreators } from "./../actions/estone-actions-creators";
 

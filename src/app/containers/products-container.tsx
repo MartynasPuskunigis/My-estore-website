@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Container } from "flux/utils";
 
-import { Product } from "./../contracts/Product";
-import { ProductsReduceStore } from "./../stores/products-store";
+import { Product } from "../contracts/Product";
+import { ProductsReduceStore } from "../stores/products-store";
 import { ProductItemView } from "../components/home/product-item-view";
 
 interface State {

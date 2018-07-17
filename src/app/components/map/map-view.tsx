@@ -4,6 +4,8 @@ import { withProps, compose } from "recompose";
 import Marker from "react-google-maps/lib/components/Marker";
 import { demoMapStyle } from "./demoMapStyle";
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
+import { Markers } from "./markersList";
+import { UserMarker } from "../../contracts/UserMarker";
 
 //import { GOOGLE_STYLE } from "./google-style";
 
@@ -22,17 +24,17 @@ const MyMapComponent = compose(
     }),
     withScriptjs,
     withGoogleMap
-    // tslint:disable-next-line:no-any
-)((props: any) => (
+)((rops: any) => (
     <GoogleMap defaultZoom={7} center={{ lat: 55.1694, lng: 23.8813 }} defaultOptions={{ styles: demoMapStyle }}>
-        <MarkerClusterer onClick={props.onMarkerClustererClick} averageCenter enableRetinaIcons gridSize={60}>
-            {props.markers.map(marker => <Marker key={marker.photo_id} position={{ lat: marker.latitude, lng: marker.longitude }} />)}
+        <MarkerClusterer onClick={rops.onMarkerClustererClick} averageCenter enableRetinaIcons gridSize={60}>
+            {Markers.map(marker => <Marker key={marker.index} position={{ lat: marker.latitude, lng: marker.longitude }} />)}
         </MarkerClusterer>
     </GoogleMap>
 ));
 
 interface Props {
     markers?: JSX.Element[];
+    userMarkers?: UserMarker[];
 }
 
 export class WorldMapView extends React.Component<Props> {
@@ -40,7 +42,7 @@ export class WorldMapView extends React.Component<Props> {
         return (
             <div className="world-map-view">
                 {this.props.children}
-                <MyMapComponent>{this.props.markers}</MyMapComponent>
+                <MyMapComponent >{this.props.markers}</MyMapComponent>
             </div>
         );
     }

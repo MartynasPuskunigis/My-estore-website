@@ -2,11 +2,11 @@ import * as React from "react";
 import { NavLink } from "react-router-dom";
 import { Container } from "flux/utils";
 
-import { User } from "./../contracts/User";
+import { User } from "../contracts/User";
 
-import { UsersReduceStore } from "./../stores/users-store";
+import { UsersReduceStore } from "../stores/users-store";
 
-import { EStoreActionsCreators } from "./../actions/estone-actions-creators";
+import { EStoreActionsCreators } from "../actions/estone-actions-creators";
 
 interface State {
     currentUser: User;
