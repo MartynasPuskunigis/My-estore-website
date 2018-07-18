@@ -24,9 +24,9 @@ const MyMapComponent = compose(
     }),
     withScriptjs,
     withGoogleMap
-)((rops: any) => (
+)((props: any) => (
     <GoogleMap defaultZoom={7} center={{ lat: 55.1694, lng: 23.8813 }} defaultOptions={{ styles: demoMapStyle }}>
-        <MarkerClusterer onClick={rops.onMarkerClustererClick} averageCenter enableRetinaIcons gridSize={60}>
+        <MarkerClusterer onClick={props.onMarkerClustererClick} averageCenter enableRetinaIcons gridSize={60}>
             {Markers.map(marker => <Marker key={marker.index} position={{ lat: marker.latitude, lng: marker.longitude }} />)}
         </MarkerClusterer>
     </GoogleMap>
